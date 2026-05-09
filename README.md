@@ -69,13 +69,17 @@ genai-using-llms-final-project/
 │       ├── workflow/                        # Plan-Execute orchestrator
 │       ├── llm/                             # LiteLLM backend
 │       └── servers/                         # IoT, FMSR, TSFM, Utilities MCP servers
-└── performance_optimization/
-    ├── caching/                             # Placeholder resolver optimization
-    ├── parallelization/                     # Async N×M FMSR parallelization
-    └── quantization/
-        ├── code/                            # Benchmarking scripts
-        ├── charts/                          # Per-model precision vs. accuracy/latency charts
-        └── analysis/                        # Per-model quantization analysis
+├── performance_optimization/
+│   ├── caching/                             # Placeholder resolver optimization
+│   ├── parallelization/
+│   │   └── fmsr_server.py                  # Async N×M FMSR parallelization
+│   └── quantization/
+│       ├── code/                            # Benchmarking scripts
+│       ├── charts/                          # Per-model precision vs. accuracy/latency charts
+│       └── analysis/                        # Per-model quantization analysis
+└── papers/
+    ├── NeurIPS2026_Submission.pdf           # Trajel dataset paper
+    └── Performance_Optimization_Paper.pdf  # HPML performance optimization paper
 ```
 
 ---
