@@ -96,6 +96,6 @@ genai-using-llms-final-project/
 **STATGR5293 — Generative AI Using LLMs**
 Section 007 (Wednesday) — Columbia University, Spring 2026
 
-**Instructor:** Parijat Dube 
+**Instructor:** Parijat Dube (Adjunct Professor, Columbia University)
 
 **Project PI:** Dhaval C. Patel (IBM Research)
