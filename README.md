@@ -59,13 +59,13 @@ Exploratory analysis of the Trajel dataset: type distributions, per-model halluc
 ```
 genai-using-llms-final-project/
 ├── data/
-│   └── trajel_dataset.csv                  # Expert-annotated trajectory dataset
+│   └── trajel_dataset.csv                  # Annotated trajectory dataset
 ├── hallucination_detection/
 │   ├── classifiers.ipynb                   # BERT / NLI / Longformer detection models
 │   ├── analysis.ipynb                      # Dataset EDA and signal analysis
 │   └── llm_judge_prompt.py                 # LLM-as-a-Judge evaluation prompt
 ├── assetopsbench/
-│   └── src/                                # AssetOpsBench agent source (IBM Research)
+│   └── src/                                # AssetOpsBench agent source
 │       ├── workflow/                        # Plan-Execute orchestrator
 │       ├── llm/                             # LiteLLM backend
 │       └── servers/                         # IoT, FMSR, TSFM, Utilities MCP servers
@@ -78,8 +78,8 @@ genai-using-llms-final-project/
 │       ├── charts/                          # Per-model precision vs. accuracy/latency charts
 │       └── analysis/                        # Per-model quantization analysis
 └── papers/
-    ├── NeurIPS2026_Submission.pdf           # Trajel dataset paper
-    └── Performance_Optimization_Paper.pdf  # HPML performance optimization paper
+    ├── NeurIPS2026_Submission.pdf           
+    └── Performance_Optimization_Paper.pdf
 ```
 
 ---
