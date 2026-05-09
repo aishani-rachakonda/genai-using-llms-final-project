@@ -1,6 +1,6 @@
 # Trajectory-Level Hallucination Detection in Multi-Agent Industrial Workflows
 
-**Generative AI Using LLMs — Final Project**
+**STATGR5293 — Generative AI Using LLMs — Final Project**
 
 ---
 
@@ -22,7 +22,7 @@ Standard hallucination benchmarks treat every task as an isolated input → outp
 
 ---
 
-## This Project: Trajel
+## This Project: Trajel Dataset
 
 We introduce **Trajel**, a framework and dataset for trajectory-level hallucination detection built on top of AssetOpsBench. The core contributions are:
 
@@ -85,12 +85,23 @@ The clarity-and-justification execution signal alone outperforms every trained c
 ```
 genai-using-llms-final-project/
 ├── data/
-│   └── Trajel_Dataset_Cleaned.csv   # Expert-annotated trajectory dataset
+│   └── Trajel_Dataset_Cleaned.csv          # Expert-annotated trajectory dataset
 ├── hallucination_detection/
-│   ├── classifiers.ipynb            # BERT / NLI / Longformer detection models
-│   ├── analysis.ipynb               # Dataset EDA and signal analysis
-│   └── llm_judge_prompt.py          # LLM-as-a-Judge evaluation prompt
-└── README.md
+│   ├── classifiers.ipynb                   # BERT / NLI / Longformer detection models
+│   ├── analysis.ipynb                      # Dataset EDA and signal analysis
+│   └── llm_judge_prompt.py                 # LLM-as-a-Judge evaluation prompt
+├── assetopsbench/
+│   └── src/                                # AssetOpsBench agent source (IBM Research)
+│       ├── workflow/                        # Plan-Execute orchestrator
+│       ├── llm/                             # LiteLLM backend
+│       └── servers/                         # IoT, FMSR, TSFM, Utilities MCP servers
+└── performance_optimization/
+    ├── caching/                             # Placeholder resolver optimization
+    ├── parallelization/                     # Async N×M FMSR parallelization
+    └── quantization/
+        ├── code/                            # Benchmarking scripts
+        ├── charts/                          # Per-model precision vs. accuracy/latency charts
+        └── analysis/                        # Per-model quantization analysis
 ```
 
 ---
@@ -104,4 +115,8 @@ genai-using-llms-final-project/
 
 ## Course
 
-Generative AI Using LLMs — Columbia University
+**STATGR5293 — Section 007 (Wednesday)**
+Generative AI Using LLMs — Columbia University, Spring 2026
+
+**Instructor:** Parijat Dube
+**Project PI:** Dhaval C. Patel (IBM Research)
