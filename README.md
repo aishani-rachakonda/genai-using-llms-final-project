@@ -38,45 +38,19 @@ We introduce **Trajel**, a framework and dataset for trajectory-level hallucinat
 
 ### 2. Trajel Dataset (`data/trajel_dataset.csv`)
 
-225 expert-annotated agent trajectories:
-- 6 LLM model configurations
-- 42 industrial AssetOps task questions
-- Human annotations from Columbia University and IBM Research
-- Each entry: hallucination presence, type(s), localization, free-text rationale, and LLM-judge vs. human agreement
-
-Human-identified hallucination rate: **68.3%**. Nearly half of hallucinated trajectories (48.7%) carry multiple types simultaneously.
+225 expert-annotated agent trajectories across 6 LLM model configurations and 42 industrial AssetOps task questions, with human annotations from Columbia University and IBM Research. Human-identified hallucination rate: **68.3%**.
 
 ### 3. ML Detection Models (`hallucination_detection/classifiers.ipynb`)
 
-Three complementary detection paradigms:
-
-- **BERT (subtask-level)**: classifies individual Thought–Action–Observation steps
-- **NLI (trajectory-level)**: treats trajectory history as premise and current step as hypothesis
-- **Longformer (long-context)**: ingests the full serialized trajectory for global structural detection
+Three detection paradigms: BERT (subtask-level), NLI (trajectory-level), and Longformer (long-context).
 
 ### 4. LLM-as-a-Judge Prompt (`hallucination_detection/llm_judge_prompt.py`)
 
-A structured evaluation prompt that classifies hallucination presence, type, location, and rationale for any agent trajectory. Used as the automated baseline in the Trajel evaluation pipeline.
+A structured evaluation prompt that classifies hallucination presence, type, location, and rationale for any agent trajectory.
 
 ### 5. Data Analysis (`hallucination_detection/analysis.ipynb`)
 
-Exploratory analysis of the Trajel dataset: type distributions, per-model hallucination rates, localization patterns, and execution-quality signal correlations.
-
----
-
-## Key Results
-
-| Finding | Value |
-|---|---|
-| Human hallucination rate | 68.3% |
-| Most common type | Procedural (38.5%) |
-| Multi-type trajectories | 48.7% |
-| LLM-judge binary recall | 92.2% |
-| LLM-judge F1 on logical type | 0.258 |
-| Best classifier AUC (NLI) | 0.689 |
-| Best single signal AUC (Clarity & Justification) | **0.908** |
-
-The clarity-and-justification execution signal alone outperforms every trained classifier — suggesting lightweight runtime monitors are the most practical path to real-time hallucination detection.
+Exploratory analysis of the Trajel dataset: type distributions, per-model hallucination rates, and execution-quality signal correlations.
 
 ---
 
