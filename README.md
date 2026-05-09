@@ -36,7 +36,7 @@ We introduce **Trajel**, a framework and dataset for trajectory-level hallucinat
 | **Procedural** | Skips, reorders, or fabricates a required workflow step |
 | **Scope** | Agent acts outside its assigned mandate |
 
-### 2. Trajel Dataset (`data/Trajel_Dataset_Cleaned.csv`)
+### 2. Trajel Dataset (`data/trajel_dataset.csv`)
 
 225 expert-annotated agent trajectories:
 - 6 LLM model configurations
@@ -85,7 +85,7 @@ The clarity-and-justification execution signal alone outperforms every trained c
 ```
 genai-using-llms-final-project/
 ├── data/
-│   └── Trajel_Dataset_Cleaned.csv          # Expert-annotated trajectory dataset
+│   └── trajel_dataset.csv                  # Expert-annotated trajectory dataset
 ├── hallucination_detection/
 │   ├── classifiers.ipynb                   # BERT / NLI / Longformer detection models
 │   ├── analysis.ipynb                      # Dataset EDA and signal analysis
