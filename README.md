@@ -142,8 +142,7 @@ genai-using-llms-final-project/
 │   ├── Performance_Optimization_Paper.pdf
 │   └── Related_Works_Collection.xlsx
 ├── submissions/
-│   ├── presentation.pptx                   # Final project presentation
-│   └── report.md                           # Final project report
+│   └── presentation.pptx                   # Final project presentation
 ├── tests/
 │   └── test_llm_judge.py                   # Unit and integration tests (14 tests)
 └── requirements.txt                        # Python dependencies
