@@ -6,7 +6,7 @@
 
 ## Overview
 
-This project extends [AssetOpsBench](https://github.com/IBM/AssetOpsBench) (IBM Research), a benchmark for AI-driven failure diagnosis of industrial assets (chillers, pumps, compressors). Given a sensor reading or anomaly report, AssetOpsBench dispatches tasks across four FastMCP tool servers — IoT, FSMR, TSFM, and WO — using a Plan-Execute orchestrator to identify root causes, predict failure modes, and generate maintenance work orders automatically.
+This project extends [AssetOpsBench](https://github.com/IBM/AssetOpsBench) (IBM Research), a benchmark for AI-driven failure diagnosis of industrial assets (chillers, pumps, compressors). Given a sensor reading or anomaly report, AssetOpsBench dispatches tasks across four FastMCP tool servers — IoT, FMSR, TSFM, and WO — using a Plan-Execute orchestrator to identify root causes, predict failure modes, and generate maintenance work orders automatically.
 
 Each scenario produces a sequential **Thought → Action → Observation** trace across multiple agent calls. This project focuses on detecting when that trace goes wrong.
 
@@ -54,16 +54,76 @@ Exploratory analysis of the Trajel dataset: type distributions, per-model halluc
 
 ---
 
+## Installation
+
+### Prerequisites
+
+- Python 3.10+
+- An [Anthropic API key](https://console.anthropic.com) (for the LLM-as-a-Judge demo)
+
+### Set up environment
+
+```bash
+git clone https://github.com/aishani-rachakonda/genai-using-llms-final-project.git
+cd genai-using-llms-final-project
+
+python3 -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+
+pip install -r requirements.txt
+```
+
+### Set your API key
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+---
+
+## Usage
+
+### Run the LLM-as-a-Judge demo (terminal)
+
+```bash
+cd hallucination_detection
+python demo.py
+```
+
+### Run the LLM-as-a-Judge demo (Colab)
+
+See [`hallucination_detection/README.md`](hallucination_detection/README.md) for step-by-step Colab setup instructions.
+
+### Run the detection notebooks
+
+Open either notebook in Jupyter:
+
+```bash
+jupyter notebook hallucination_detection/classifiers.ipynb   # BERT / NLI / Longformer
+jupyter notebook hallucination_detection/analysis.ipynb      # Dataset EDA
+```
+
+### Run tests
+
+```bash
+python3 -m pytest tests/ -v
+```
+
+---
+
 ## Repository Structure
 
 ```
 genai-using-llms-final-project/
 ├── data/
-│   └── trajel_dataset.csv                  # Annotated trajectory dataset
+│   └── trajel_dataset.csv                  # 225-row annotated trajectory dataset
 ├── hallucination_detection/
 │   ├── classifiers.ipynb                   # BERT / NLI / Longformer detection models
 │   ├── analysis.ipynb                      # Dataset EDA and signal analysis
-│   └── llm_judge_prompt.py                 # LLM-as-a-Judge evaluation prompt
+│   ├── llm_judge_prompt.py                 # LLM-as-a-Judge evaluation prompt
+│   ├── demo.ipynb                          # Colab demo notebook
+│   ├── demo.py                             # Standalone terminal demo
+│   └── README.md                           # Colab setup instructions
 ├── assetopsbench/
 │   └── src/                                # AssetOpsBench agent source
 │       ├── workflow/                        # Plan-Execute orchestrator
@@ -77,10 +137,43 @@ genai-using-llms-final-project/
 │       ├── code/                            # Benchmarking scripts
 │       ├── charts/                          # Per-model precision vs. accuracy/latency charts
 │       └── analysis/                        # Per-model quantization analysis
-└── papers/
-    ├── NeurIPS2026_Submission.pdf           
-    └── Performance_Optimization_Paper.pdf
+├── papers/
+│   ├── NeurIPS2026_Submission.pdf
+│   ├── Performance_Optimization_Paper.pdf
+│   └── Related_Works_Collection.xlsx
+├── submissions/
+│   ├── presentation.pptx                   # Final project presentation
+│   └── report.md                           # Final project report
+├── tests/
+│   └── test_llm_judge.py                   # Unit and integration tests (14 tests)
+└── requirements.txt                        # Python dependencies
 ```
+
+---
+
+## Troubleshooting
+
+**`ModuleNotFoundError: No module named 'anthropic'`**
+Run `pip install -r requirements.txt` inside your virtual environment.
+
+**`JSONDecodeError` when running the demo**
+The judge response may be wrapped in markdown code fences. The demo strips these automatically. If you see this with a custom prompt, add:
+```python
+raw = raw.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+```
+
+**Colab: `userdata.get("ANTHROPIC_API_KEY")` returns `None`**
+Make sure you toggled **Notebook access** on when adding the secret in the Colab Secrets panel (🔑 icon in the left sidebar).
+
+**Tests fail with `ModuleNotFoundError`**
+Make sure you're running pytest from the repo root with the virtual environment active:
+```bash
+source venv/bin/activate
+python3 -m pytest tests/ -v
+```
+
+**`torch` installation is slow**
+This is normal — PyTorch is a large package. Use `pip install torch --index-url https://download.pytorch.org/whl/cpu` for a CPU-only build if you don't have a GPU.
 
 ---
 
