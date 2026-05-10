@@ -143,6 +143,7 @@ genai-using-llms-final-project/
 │   └── Related_Works_Collection.xlsx
 ├── submissions/
 │   ├── presentation.pptx                   # Final project presentation
+│   ├── report.pdf                          # Final project report
 │   └── demo_recording.mov                  # Live demo recording
 ├── tests/
 │   └── test_llm_judge.py                   # Unit and integration tests (14 tests)
